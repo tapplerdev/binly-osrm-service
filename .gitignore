@@ -1,0 +1,9 @@
+# OSM data (large files)
+*.osm.pbf
+*.osrm*
+
+# Railway
+.railway
+
+# macOS
+.DS_Store
