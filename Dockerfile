@@ -44,8 +44,8 @@ WORKDIR /data
 # Ontario are ~3,000 km apart and share none, so there is nothing to overlap.
 # Adding an ADJACENT pair later would need more care here.
 RUN set -eux; \
-    wget -q https://download.geofabrik.de/north-america/us/california-latest.osm.pbf; \
-    wget -q https://download.geofabrik.de/north-america/canada/ontario-latest.osm.pbf; \
+    wget --timeout=60 --tries=3 -q https://download.geofabrik.de/north-america/us/california-latest.osm.pbf; \
+    wget --timeout=60 --tries=3 -q https://download.geofabrik.de/north-america/canada/ontario-latest.osm.pbf; \
     ls -la *.osm.pbf; \
     osmium merge california-latest.osm.pbf ontario-latest.osm.pbf -o binly-merged.osm.pbf; \
     rm -f california-latest.osm.pbf ontario-latest.osm.pbf; \
